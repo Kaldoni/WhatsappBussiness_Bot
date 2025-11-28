@@ -1,7 +1,12 @@
 [build]
+builder = "nixpacks"
 
 [deploy]
 startCommand = "node index.js"
 healthcheckPath = "/"
 healthcheckTimeout = 300
 restartPolicyType = "on_failure"
+
+[nixpacks]
+# Use Node 20
+nixPkgs = ["nodejs-20_x"]
