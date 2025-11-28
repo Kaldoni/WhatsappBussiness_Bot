@@ -1,0 +1,7 @@
+[build]
+
+[deploy]
+startCommand = "node index.js"
+healthcheckPath = "/"
+healthcheckTimeout = 100
+restartPolicyType = "never"
