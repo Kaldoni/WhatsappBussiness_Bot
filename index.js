@@ -30,6 +30,7 @@ app.get("/webhook", (req, res) => {
 // ======== 🔥 2. HANDLE INCOMING WHATSAPP MESSAGES (POST) ========
 app.post("/webhook", async (req, res) => {
     try {
+        res.sendStatus(200);
         const data = req.body;
         console.log("Incoming webhook: ", JSON.stringify(data, null, 2));
 
@@ -54,7 +55,7 @@ app.post("/webhook", async (req, res) => {
             await sendMessage(from, aiReply);
         }
 
-        res.sendStatus(200);
+
     } catch (err) {
         console.error("Webhook error:", err);
         res.sendStatus(500);
@@ -113,6 +114,6 @@ async function askGroq(userMessage) {
 // ======== SERVER PORT ========
 const PORT = process.env.PORT || 8080;
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server running on port ${PORT}`);
 });
